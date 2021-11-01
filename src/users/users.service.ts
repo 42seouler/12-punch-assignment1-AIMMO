@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user-dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 
 @Injectable()
 export class UsersService {
@@ -11,8 +12,13 @@ export class UsersService {
     @InjectModel(User.name) private readonly userModel: Model<User>,
   ) {}
 
-  findAll() {
-    return this.userModel.find().exec();
+  findAll(paginationQueryDto: PaginationQueryDto) {
+    const { limit, offset } = paginationQueryDto;
+    return this.userModel
+      .find()
+      .skip(limit * offset)
+      .limit(limit)
+      .exec();
   }
 
   async findOne(id: string) {
