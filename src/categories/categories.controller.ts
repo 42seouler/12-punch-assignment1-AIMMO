@@ -1,10 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, Req, UseGuards } from '@nestjs/common';
 import CategoriesService from './categories.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-// import { Post } from 'src/posts/entities/post.entity';
 import CreateCategoryDto from './dto/create-category.dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
-import { UpdatePostDto } from '../posts/dto/update-post.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Controller('categories')

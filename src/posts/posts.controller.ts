@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
-  Delete, Get,
+  Delete,
+  Get,
   Param,
   Patch,
-  Post, Query,
+  Post,
+  Query,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -31,7 +33,6 @@ export class PostsController {
   @Post()
   @UseGuards(JwtAuthGuard)
   async createPost(@Body() createPostDto: CreatePostDto, @Request() req) {
-    console.log(req.user);
     return this.postsService.create(createPostDto, req.user);
   }
 
