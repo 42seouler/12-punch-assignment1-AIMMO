@@ -14,13 +14,14 @@ import { UpdateUserDto } from './dto/update-user-dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { User } from './user.entity';
+import { UserPaginationQueryDto } from '../common/dto/user-pagination-query.dto';
 
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @Get()
-  findAll(@Query() paginationQuery: PaginationQueryDto) {
+  findAll(@Query() paginationQuery: UserPaginationQueryDto) {
     return this.usersService.findAll(paginationQuery);
   }
 
