@@ -3,7 +3,9 @@ import { CommentsService } from './comments.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import CreateCommentDto from './dto/create-comment.dto';
 import PaginationCommentDto from './dto/pagination-comment.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('comments')
 @Controller('comments')
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}

@@ -15,7 +15,9 @@ import CreatePostDto from './dto/create-post.dto';
 import { PostsService } from './posts.service';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('posts')
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
