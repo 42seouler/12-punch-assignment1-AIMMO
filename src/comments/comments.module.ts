@@ -7,11 +7,13 @@ import { Comment, CommentSchema } from './entities/comment.entity';
 import { PostsModule } from '../posts/posts.module';
 import { Post, PostSchema } from '../posts/entities/post.entity';
 import { Bucket, BucketSchema } from '../bucket/bucket.entity';
+import { BucketModule } from '../bucket/bucket.module';
 
 @Module({
   imports: [
     UsersModule,
     PostsModule,
+    BucketModule,
     MongooseModule.forFeature([
       { name: Comment.name, schema: CommentSchema },
       { name: Post.name, schema: PostSchema },
