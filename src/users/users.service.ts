@@ -29,6 +29,14 @@ export class UsersService {
     return user;
   }
 
+  async findByName(name: string) {
+    const user = await this.userModel.findOne({ email: name }).exec();
+    if (!user) {
+      throw new NotFoundException(`User #${name} not found`);
+    }
+    return user;
+  }
+
   create(createUserDto: CreateUserDto) {
     const user = new this.userModel(createUserDto);
     return user.save();
