@@ -1,0 +1,56 @@
+
+###Create new user
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+    "email": "test1@test.com",
+    "password": "test"
+}
+
+### Sign in as an existing user
+POST http://localhost:3000/users/signin
+Content-Type: application/json
+
+{
+    "email": "test1@test.com",
+    "password": "test"
+}
+
+### Signout
+POST http://localhost:3000/users/signout
+
+### whoami
+GET  http://localhost:3000/users/whoami
+
+
+
+
+
+
+
+### Find all posts
+GET  http://localhost:3000/posts?limit=30&offset=0
+
+### Find one post
+GET  http://localhost:3000/posts/1
+
+### Create post
+POST http://localhost:3000/posts/
+Content-Type: application/json
+
+{
+    "post": "test3"
+}
+
+### Update post
+PATCH  http://localhost:3000/posts/1
+Content-Type: application/json
+
+{
+    "post": "chansme"
+}
+
+### Delete post
+DELETE   http://localhost:3000/posts/6
+Content-Type: application/json
