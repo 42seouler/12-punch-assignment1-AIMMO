@@ -1,10 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
+import { UserPaginationQueryDto } from '../common/dto/user-pagination-query.dto';
 
 @Injectable()
 export class UsersService {
@@ -12,7 +13,7 @@ export class UsersService {
     @InjectModel(User.name) private readonly userModel: Model<User>,
   ) {}
 
-  findAll(paginationQueryDto: PaginationQueryDto) {
+  findAll(paginationQueryDto: UserPaginationQueryDto) {
     const { limit, offset } = paginationQueryDto;
     return this.userModel
       .find()
@@ -37,7 +38,11 @@ export class UsersService {
     return user;
   }
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
+    const existingUser = await this.userModel.findOne({ email: createUserDto.email }).exec();
+    if (existingUser) {
+      throw new BadRequestException('중복 된 아이디 입니다');
+    }
     const user = new this.userModel(createUserDto);
     return user.save();
   }
