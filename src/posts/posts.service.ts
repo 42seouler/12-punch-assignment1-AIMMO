@@ -21,7 +21,7 @@ export class PostsService {
   }
 
   async findOne(id: string) {
-    const post = await this.postModel.findOne({ _id: id }).exec();
+    const post = await this.postModel.findOne({ _id: id }).populate('comment');
     if (!post) {
       throw new NotFoundException(`Post #${id} not found`);
     }
@@ -49,6 +49,9 @@ export class PostsService {
 
   async remove(id: string) {
     const user = await this.findOne(id);
+    if (!user) {
+      throw new NotFoundException();
+    }
     return user.remove();
   }
 }
