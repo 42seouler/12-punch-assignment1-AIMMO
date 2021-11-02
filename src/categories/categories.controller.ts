@@ -4,7 +4,9 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import CreateCategoryDto from './dto/create-category.dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('categories')
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
