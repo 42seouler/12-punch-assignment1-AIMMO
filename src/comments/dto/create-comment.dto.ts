@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 import { Optional } from '@nestjs/common';
 
 export class CreateCommentDto {
@@ -6,10 +6,13 @@ export class CreateCommentDto {
   @IsNotEmpty()
   content: string;
 
+  @IsOptional()
   @IsString()
-  @Optional()
-  @IsNotEmpty()
   post: string;
+
+  @IsString()
+  @IsOptional()
+  parent: string;
 }
 
 export default CreateCommentDto;

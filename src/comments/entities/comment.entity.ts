@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { User } from '../../users/user.entity';
 import { Post } from '../../posts/entities/post.entity';
+import { Bucket } from '../../bucket/bucket.entity';
 
 @Schema({ timestamps: true })
 export class Comment extends Document {
@@ -16,6 +17,8 @@ export class Comment extends Document {
   depth: number;
   @Prop()
   content: string;
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bucket' }] })
+  bucket: Bucket[];
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);
