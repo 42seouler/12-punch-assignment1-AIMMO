@@ -20,14 +20,20 @@ import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
+  @Get('search')
+  Search(@Query() paginationQuery: PaginationQueryDto, @Body() req) {
+    return this.postsService.Search(paginationQuery, req);
+  }
+
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
     return this.postsService.findAll(paginationQuery);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.postsService.findOne(id);
+  @UseGuards(JwtAuthGuard)
+  findOne(@Param('id') id: string, @Request() req) {
+    return this.postsService.findOneAndView(id, req.user);
   }
 
   @Post()
