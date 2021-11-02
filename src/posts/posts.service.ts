@@ -49,6 +49,9 @@ export class PostsService {
 
   async remove(id: string) {
     const user = await this.findOne(id);
+    if (!user) {
+      throw new NotFoundException();
+    }
     return user.remove();
   }
 }
