@@ -202,4 +202,13 @@ curl -X POST http://ec2-3-36-50-211.ap-northeast-2.compute.amazonaws.com:3000/co
 
 
 # 블로그 포스팅
-- 추후 업로드 예정
+
+## 김서경 (팀장님)
+- https://bit.ly/2ZJLRzz
+- https://bit.ly/3wdR9iY
+
+## 김요셉 (팀원님)
+- https://dev.to/jokim/deploying-to-aws-ec2-2m10
+
+## 김남형 (팀원님)
+- https://velog.io/@42seouler/wanted-1
