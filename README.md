@@ -198,17 +198,3 @@ curl -X POST http://ec2-3-36-50-211.ap-northeast-2.compute.amazonaws.com:3000/ca
 ```
 curl -X POST http://ec2-3-36-50-211.ap-northeast-2.compute.amazonaws.com:3000/comments -d '{"content": "내일 잔다", "post": "6181ca4ca0ce776a269ec82a"}' -H "Content-Type: application/json" -H "Authorization: Bearer {eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndhbnRlZCIsInN1YiI6IjYxODFkN2Q4NTNmYzM3YmQ0Y2FlNzQ4OCIsImlhdCI6MTYzNTg5OTQwMywiZXhwIjoxNjM1OTU5NDAzfQ.3CyLY0rgA_0bFi4VtP4MGs0ZVYlAoNRQlt-zKEJOeZ4}"
 ```
-
-
-
-# 블로그 포스팅
-
-## 김서경 (팀장님)
-- https://bit.ly/2ZJLRzz
-- https://bit.ly/3wdR9iY
-
-## 김요셉 (팀원님)
-- https://dev.to/jokim/deploying-to-aws-ec2-2m10
-
-## 김남형 (팀원님)
-- https://velog.io/@42seouler/wanted-1
